@@ -1,0 +1,3519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - TALBI SIHAM</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        .dark-mode {
+            --primary-color: #818cf8;
+            --secondary-color: #a78bfa;
+            --accent-color: #22d3ee;
+            --success-color: #34d399;
+            --text-color: #f8fafc;
+            --text-light: #cbd5e1;
+            --light-bg: #0f172a;
+            --white: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.95);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 24px;
+            color: var(--text-color);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .theme-toggle:hover {
+            background: var(--light-bg);
+            transform: rotate(180deg) scale(1.1);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover {
+            background: var(--light-bg);
+            transform: scale(1.1);
+        }
+
+  /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+            max-width: 800px;
+        }
+
+        .profile-container {
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .about h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-visual {
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+        }
+
+        .profile-image-wrapper:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tech-badge {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .profile-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            font-weight: 600;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .about-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .about-description {
+            margin-bottom: 40px;
+        }
+
+        .about-description p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(99, 102, 241, 0.1) 50%);
+            padding: 0 5px;
+            border-radius: 3px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h4 {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            font-size: 1.3rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .expertise-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .expertise-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .expertise-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .expertise-title {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .about-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Education Section */
+        .education {
+            padding: 100px 0;
+            background: var(--light-bg);
+        }
+
+        .education h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .education h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .education-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .education-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .education-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .education-institution {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .education-item p {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-visual {
+                position: static;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .about-actions {
+                flex-direction: column;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        
+        
+        
+        
+        
+        /* About Section */
+/* Layout */
+.about-section {
+    padding: 80px 5%;
+    display: flex;
+    justify-content: center;
+    background: #0e0e11;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1300px;
+}
+
+/* Left side */
+.profile-3d {
+    position: relative;
+    width: 330px;
+    height: 330px;
+    margin: auto;
+    transform-style: preserve-3d;
+    animation: soft-rotate 15s infinite ease-in-out;
+}
+
+@keyframes soft-rotate {
+    0% { transform: rotateY(0deg) rotateX(0deg); }
+    50% { transform: rotateY(18deg) rotateX(8deg); }
+    100% { transform: rotateY(0deg) rotateX(0deg); }
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 26px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+}
+
+/* Floating badges */
+.badge {
+    position: absolute;
+    background: #ffffff15;
+    border: 1px solid #ffffff25;
+    padding: 10px;
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    animation: float 6s infinite ease-in-out;
+}
+
+.badge i { font-size: 20px; color: #fff; }
+
+.badge-py { top: -20px; left: 20px; }
+.badge-ai { bottom: -15px; right: 15px; animation-delay: 1s; }
+.badge-sec { top: 50%; right: -25px; animation-delay: 2s; }
+.badge-js { bottom: 45%; left: -25px; animation-delay: 3s; }
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* Status */
+.profile-status {
+    margin-top: 18px;
+    color: #ddd;
+    font-size: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: #2fd16e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #2fd16e;
+}
+
+/* Right side text */
+.about-title {
+    font-size: 38px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.about-role {
+    color: #b3b3ff;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+.tagline {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.about-text {
+    color: #ccc;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.highlight {
+    color: #6a7dff;
+    font-weight: bold;
+}
+
+/* Info grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Glass card */
+.glass {
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 12px;
+}
+
+.stat-value {
+    font-size: 30px;
+    font-weight: 600;
+    color: #6a7dff;
+}
+
+/* Expertise list */
+.expert-list .expert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-outline {
+    padding: 12px 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-primary {
+    background: #6a7dff;
+    color: #fff;
+}
+.btn-primary:hover {
+    background: #8492ff;
+}
+
+.btn-outline {
+    border: 1px solid #6a7dff;
+    color: #6a7dff;
+}
+.btn-outline:hover {
+    background: #6a7dff;
+    color: #fff;
+}
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-visual {
+                position: static;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about h2 {
+                font-size: 2.5rem;
+            }
+            
+            .about-header h3 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-image {
+                height: 350px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about {
+                padding: 60px 0;
+            }
+            
+            .about h2 {
+                font-size: 2rem;
+                margin-bottom: 50px;
+            }
+            
+            .profile-image {
+                height: 300px;
+            }
+            
+            .tech-badge {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+        /* Certifications Section */
+ .certifications {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+        }
+
+        .certifications h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .certifications h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .certification-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .certificate-image-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f7ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certification-card:hover .certificate-image {
+            transform: scale(1.03);
+        }
+
+        .certificate-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .certificate-placeholder .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .certificate-placeholder .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .certificate-placeholder .accent {
+            margin-top: 15px;
+            width: 60px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .certification-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .certification-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .certification-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .certification-issuer {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .certification-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .certification-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .certification-badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .certification-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .certification-link:hover {
+            color: var(--secondary-color);
+            gap: 8px;
+        }
+
+        /* Modal pour agrandir les images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .certifications h2 {
+                font-size: 2rem;
+            }
+        }
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigation par catégories */
+        .skills-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .category-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: var(--card-bg);
+            border: 2px solid transparent;
+            border-radius: 50px;
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .category-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .category-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .category-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Grille des compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-card.hidden {
+            opacity: 0.3;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .skill-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        .skill-info {
+            flex: 1;
+        }
+
+        .skill-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+
+
+         /* Experience Section */
+        .experience {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+        }
+
+        .experience h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        .experience h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 30px;
+            width: 2px;
+            background: var(--gradient);
+            opacity: 0.3;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 80px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--primary-color);
+            z-index: 2;
+        }
+
+        .experience-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
+
+        .experience-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .experience-content::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid var(--primary-color);
+        }
+
+        .experience-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .experience-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .experience-company {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .experience-description {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .experience-tasks {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .experience-tasks li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .experience-tasks li::before {
+            content: '▹';
+            position: absolute;
+            left: -15px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .experience-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .experience-timeline::before {
+                left: 20px;
+            }
+            
+            .experience-item {
+                padding-left: 60px;
+            }
+            
+            .experience-item::before {
+                left: 12px;
+            }
+            
+            .experience-content {
+                padding: 20px;
+            }
+            
+            .experience-title {
+                font-size: 1.2rem;
+            }
+            
+            .experience h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .skills-categories {
+                gap: 10px;
+            }
+            
+            .category-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .skill-card {
+                padding: 25px;
+            }
+            
+            .skill-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+
+        /* Projects Section */
+ /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .projects h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: var(--text-dark);
+            position: relative;
+            font-weight: 700;
+        }
+
+        .projects h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        /* Container pour l'image du projet */
+        .project-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f7ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Images réelles des projets */
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        /* Placeholder pour les projets sans image réelle */
+        .project-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-placeholder .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .project-placeholder .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-placeholder .accent {
+            margin-top: 15px;
+            width: 60px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        /* Couleurs différentes pour chaque projet */
+        .project-robot .project-placeholder {
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+        }
+
+        .project-web .project-placeholder {
+            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+        }
+
+        .project-java .project-placeholder {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        .project-chatbot .project-placeholder {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+        }
+
+        .project-password .project-placeholder {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .project-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(99, 102, 241, 0.1);
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects h2 {
+                font-size: 2.5rem;
+            }
+            
+            .project-img-container {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects h2 {
+                font-size: 2rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .project-link {
+                justify-content: center;
+            }
+        }
+        /* Education Section */
+        .education {
+            background-color: var(--white);
+        }
+
+        .education-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient);
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .education-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .education-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .education-institution {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-bg);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--light-bg);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes gradientShift {
+            0%, 100% { 
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            }
+            50% { 
+                background: 
+                    radial-gradient(circle at 80% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 60% 60%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-20px) rotate(120deg) scale(1.1);
+            }
+            66% { 
+                transform: translateY(10px) rotate(240deg) scale(0.9);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+
+            .about-img {
+                height: 400px;
+                order: -1;
+            }
+
+            .experience-timeline::before {
+                left: 30px;
+            }
+            
+            .experience-item {
+                flex-direction: row !important;
+                justify-content: flex-start;
+            }
+            
+            .experience-content {
+                flex: 0 0 calc(100% - 80px);
+                margin-left: 80px;
+            }
+            
+            .experience-content::before {
+                left: -50px !important;
+                right: auto !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+                gap: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .profile-img {
+                width: 180px;
+                height: 180px;
+                font-size: 4rem;
+            }
+
+            .about-img {
+                height: 300px;
+                font-size: 5rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 9999;
+            transition: width 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-code"></i>
+                    TALBI SIHAM
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#skills">Compétences</a></li>
+                    <li><a href="#experience">Expérience</a></li>
+
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#projects">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-container">
+                    <div class="profile-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+                <h1>TALBI SIHAM</h1>
+                <h2>Étudiante Ingénieure en Informatique</h2>
+                <p>Spécialisée en Intelligence Artificielle & Confiance Numérique<br>Passionnée par l'innovation technologique et la sécurité des systèmes</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn">
+                        <i class="fas fa-rocket"></i>
+                        Voir mes projets
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i>
+                        Me contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about fade-in">
+        <div class="container">
+            <h2>À propos de moi</h2>
+            <div class="about-content">
+                <!-- Colonne gauche : Image de profil -->
+                <div class="about-visual">
+                    <div class="profile-container">
+                        <div class="profile-image-wrapper">
+                            <img src="siham-prof_img.png" alt="Talbi Siham" class="profile-image">
+                            <div class="image-overlay">
+                                <div class="tech-badge">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="tech-badge">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="tech-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="tech-badge">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-status">
+                            <div class="status-indicator"></div>
+                            <span>Disponible pour des opportunités</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne droite : Contenu -->
+                <div class="about-text">
+                    <div class="about-header">
+                        <h3>Ingénieure en Informatique & Passionnée de Technologie</h3>
+                        <p class="tagline">Spécialisée en IA & Sécurité Numérique</p>
+                    </div>
+
+                    <div class="about-description">
+                        <p>Étudiante en deuxième année d'ingénierie informatique à l'<strong>ENSA Fès</strong>, je me spécialise en <span class="highlight">Intelligence Artificielle</span> et <span class="highlight">Confiance Numérique</span>. Passionnée par les technologies émergentes, je cherche à concilier innovation et sécurité dans mes projets.</p>
+                        
+                        <p>Mon objectif est de participer à des projets innovants où je pourrai mettre en pratique mes compétences en programmation, traitement de données et sécurité informatique, tout en continuant d'apprendre auprès de professionnels expérimentés.</p>
+                    </div>
+
+                    <!-- Grille d'informations -->
+                    <div class="info-grid">
+                        <!-- Statistiques -->
+                        <div class="info-card stats-card">
+                            <h4>Mon Parcours en Chiffres</h4>
+                            <div class="stats-container">
+                                <div class="stat-item">
+                                    <div class="stat-value" data-target="4">0</div>
+                                    <div class="stat-label">Années d'études</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" data-target="6">0</div>
+                                    <div class="stat-label">Certifications</div>
+                                
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" data-target="5">0</div>
+                                    <div class="stat-label">Projets réalisés</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" data-target="1">0</div>
+                                    <div class="stat-label">Année d'expérience</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Domaines d'expertise -->
+                        <div class="info-card expertise-card">
+                            <h4>Expertises Principales</h4>
+                            <div class="expertise-list">
+                                <div class="expertise-item">
+                                    <div class="expertise-icon">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="expertise-content">
+                                        <div class="expertise-title">Intelligence Artificielle</div>
+                                    </div>
+                                </div>
+                                <div class="expertise-item">
+                                    <div class="expertise-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="expertise-content">
+                                        <div class="expertise-title">Sécurité Informatique</div>
+                                    </div>
+                                </div>
+                                <div class="expertise-item">
+                                    <div class="expertise-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="expertise-content">
+                                        <div class="expertise-title">Développement Web</div>
+                                    </div>
+                                </div>
+                                <div class="expertise-item">
+                                    <div class="expertise-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <div class="expertise-content">
+                                        <div class="expertise-title">Réseaux & IoT</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="about-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Voir mes projets
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <i class="fas fa-paper-plane"></i>
+                            Discutons de votre projet
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills fade-in">
+        <div class="container">
+            <h2>Mes Compétences Techniques</h2>
+            <p class="section-subtitle">Un éventail de technologies maîtrisées pour répondre à vos besoins</p>
+            
+            <div class="skills-container">
+                <!-- Navigation par catégories -->
+                <div class="skills-categories">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-layer-group"></i>
+                        Toutes les compétences
+                    </button>
+                    <button class="category-btn" data-category="programming">
+                        <i class="fas fa-code"></i>
+                        Langages de Programmation
+                    </button>
+                    <button class="category-btn" data-category="web">
+                        <i class="fas fa-globe"></i>
+                        Développement Web
+                    </button>
+                    <button class="category-btn" data-category="database">
+                        <i class="fas fa-database"></i>
+                        Bases de Données
+                    </button>
+                    <button class="category-btn" data-category="tools">
+                        <i class="fas fa-tools"></i>
+                        Outils & Environnements
+                    </button>
+                    <button class="category-btn" data-category="security">
+                        <i class="fas fa-shield-alt"></i>
+                        Réseaux & Sécurité
+                    </button>
+                </div>
+
+                <!-- Grille des compétences -->
+                <div class="skills-grid">
+                    <!-- Langages de Programmation -->
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Python</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Java</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Langage C</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>PHP</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>JavaScript</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>SQL</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="programming">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>R</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Développement Web -->
+                    <div class="skill-card" data-category="web">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="data:image/jpeg;base64,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" alt="Laravel" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Laravel</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="web">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>HTML5</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="web">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>CSS3</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="web">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Bootstrap</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bases de Données -->
+                    <div class="skill-card" data-category="database">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Oracle DB</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="database">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>MySQL</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="database">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>SQL Server</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Outils & Environnements -->
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>VS Code</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" alt="Eclipse" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Eclipse</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Linux</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Jupyter Notebook</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg" alt="Anaconda" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Anaconda</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="tools">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="data:image/png;base64,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" alt="VMware" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>VMware</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Réseaux & Sécurité -->
+                    <div class="skill-card" data-category="security">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="data:image/png;base64,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" alt="Cisco" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Cisco Packet Tracer</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="security">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="data:image/png;base64,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" alt="Wireshark" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Wireshark</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="security">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="data:image/jpeg;base64,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" alt="Nmap" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>Nmap</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card" data-category="security">
+                        <div class="skill-header">
+                            <div class="skill-icon-wrapper">
+                                <img src="data:image/jpeg;base64,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" alt="OWASP" class="skill-icon">
+                            </div>
+                            <div class="skill-info">
+                                <h3>OWASP</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+            <!-- Experience Section -->
+ <!-- Experience Section -->
+    <section id="experience" class="experience fade-in">
+        <div class="container">
+            <h2>Expérience Professionnelle</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-date">
+                            <i class="fas fa-calendar"></i>
+                            Juillet 2024 – Août 2024
+                        </div>
+                        <h3 class="experience-title">Stagiaire en Développement Web & Sécurité Informatique</h3>
+                        <div class="experience-company">
+                            <i class="fas fa-building"></i>
+                            FLDM
+                        </div>
+                        <p class="experience-description">
+                            Stage intensif en développement web et sécurité informatique avec réalisation d'une plateforme complète et audit de sécurité.
+                        </p>
+                        <ul class="experience-tasks">
+                            <li>Développement d'une plateforme web de gestion des emplois du temps (Laravel, HTML, CSS, JavaScript, Bootstrap)</li>
+                            <li>Conception de la base de données et intégration de l'interface utilisateur</li>
+                            <li>Audit de sécurité réseau (Nmap, Wireshark, SSL Test, OWASP ZAP)</li>
+                            <li>Rédaction d'un rapport final avec recommandations d'amélioration</li>
+                        </ul>
+                        <div class="experience-skills">
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">OWASP</span>
+                            <span class="skill-tag">Nmap</span>
+                            <span class="skill-tag">Wireshark</span>
+                            <span class="skill-tag">Certificats SSL</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+  <!-- Certifications Section -->
+
+
+    <section id="certifications" class="certifications fade-in">
+        <div class="container">
+            <h2>Mes Certifications</h2>
+            <div class="certifications-grid">
+
+
+
+
+                                <!-- Certification 4 -->
+                <div class="certification-card">
+                    <div class="certificate-image-container">
+                        <!-- Remplacez l'URL par votre image réelle -->
+                        <img src="src/IA.jpg" alt="Understanding Artificial Intelligence" class="certificate-image">
+                        <div class="certification-year">2025</div>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Understanding Artificial Intelligence</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-graduation-cap"></i>
+                            Coursera
+                        </div>
+                        <p class="certification-description">Concepts fondamentaux de l'IA, machine learning et applications pratiques dans divers domaines.</p>
+                        <div class="certification-actions">
+                            <span class="certification-badge">IA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 1 -->
+                <div class="certification-card">
+                    <div class="certificate-image-container">
+                        <!-- Remplacez l'URL par votre image réelle -->
+                        <img src="src/reseau.png" alt="Network Technician Career Path" class="certificate-image">
+                        <div class="certification-year">2025</div>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Network Technician Career Path</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-building"></i>
+                            Cisco Networking Academy
+                        </div>
+                        <p class="certification-description">Certification complète en administration réseau, couvrant la configuration, le dépannage et la sécurité des infrastructures réseau.</p>
+                        <div class="certification-actions">
+                            <span class="certification-badge">Réseau</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="certification-card">
+                    <div class="certificate-image-container">
+                        <!-- Remplacez l'URL par votre image réelle -->
+                        <img src="src/Introduction aux opérations de réseau.png" alt="Introduction to Network Operations" class="certificate-image">
+                        <div class="certification-year">2025</div>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Introduction to Network Operations</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-network-wired"></i>
+                            Internet Society
+                        </div>
+                        <p class="certification-description">Fondamentaux des opérations réseau et gestion d'infrastructure à l'échelle mondiale.</p>
+                        <div class="certification-actions">
+                            <span class="certification-badge">Réseau</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="certification-card">
+                    <div class="certificate-image-container">
+                        <!-- Remplacez l'URL par votre image réelle -->
+                        <img src="src/IOT.jpg" alt="Internet of Things" class="certificate-image">
+                        <div class="certification-year">2025</div>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Internet of Things</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-certificate"></i>
+                            Udemy
+                        </div>
+                        <p class="certification-description">Architecture IoT, protocoles de communication et applications dans l'industrie 4.0.</p>
+                        <div class="certification-actions">
+                            <span class="certification-badge">IoT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Certification 5 -->
+                <div class="certification-card">
+                    <div class="certificate-image-container">
+                        <!-- Remplacez l'URL par votre image réelle -->
+                        <img src="src/machine learning with python.jpg" alt="Supervised Machine Learning with Python" class="certificate-image">
+                        <div class="certification-year">2025</div>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Supervised Machine Learning with Python</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-brain"></i>
+                            Mind Luster
+                        </div>
+                        <p class="certification-description">Implémentation d'algorithmes de machine learning supervisé avec Python et scikit-learn.</p>
+                        <div class="certification-actions">
+                            <span class="certification-badge">ML</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certification 6 -->
+                <div class="certification-card">
+                    <div class="certificate-image-container">
+                        <!-- Remplacez l'URL par votre image réelle -->
+                        <img src="src/internetsociety.jpg" alt="Encryption Certificate" class="certificate-image">
+                        <div class="certification-year">2025</div>
+                    </div>
+                    <div class="certification-content">
+                        <h3 class="certification-title">Encryption Certificate</h3>
+                        <div class="certification-issuer">
+                            <i class="fas fa-lock"></i>
+                            Internet Society
+                        </div>
+                        <p class="certification-description">Principes de cryptographie, algorithmes de chiffrement et mise en œuvre de solutions de sécurité.</p>
+                        <div class="certification-actions">
+                            <span class="certification-badge">Sécurité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour agrandir les images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    <!-- Projects Section -->
+   <section id="projects" class="projects fade-in">
+        <div class="container">
+            <h2>Mes projets académiques</h2>
+            <div class="projects-grid">
+                <!-- Projet 1: Fire fighting Robot -->
+                <div class="project-card project-robot">
+                    <div class="project-img-container">
+                        <!-- Remplacez cette URL par votre image réelle -->
+                        <div class="project-placeholder">
+        <img src="src/robot.jpg" 
+             class="project-image">                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Fire fighting Robot</h3>
+                        <p class="project-description">Robot autonome de lutte contre les incendies intégrant des capteurs infrarouges et un système de navigation intelligent pour la détection et l'extinction de feux.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Robotique</span>
+                            <span class="project-tag">Automatisation</span>
+                            <span class="project-tag">Arduino</span>
+                            <span class="project-tag">Capteurs</span>
+                        </div>
+                        <div class="project-links">
+                            <!-- Ajoutez un lien GitHub si disponible -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2: Site web des services bureautiques -->
+                <div class="project-card project-web">
+                    <div class="project-img-container">
+                        <!-- Remplacez cette URL par votre image réelle -->
+          <img src="src/services_bureau.png" 
+             alt="Site web des services bureautiques" 
+             class="project-image">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Site web des services bureautiques</h3>
+                        <p class="project-description">Plateforme web complète pour la gestion des services bureautiques avec interface utilisateur intuitive et système de gestion de contenu.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">HTML/CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">PHP</span>
+                            <span class="project-tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SIHAMCODE13/Plateforme-web-pour-la-gestion-des-services-bureautiques.git" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3: Application JAVA de location de voitures -->
+                <div class="project-card project-java">
+                    <div class="project-img-container">
+                        <!-- Remplacez cette URL par votre image réelle -->
+        <img src="src/location_voiture_java.png" 
+             alt="Application JAVA de location de voitures" 
+             class="project-image">                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Application JAVA de location de voitures</h3>
+                        <p class="project-description">Application desktop complète de gestion de location de véhicules avec base de données MySQL et interface graphique intuitive développée en Java Swing.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Java</span>
+                            <span class="project-tag">Swing</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Desktop App</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SIHAMCODE13/projet_location_voitures.git" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 4: Chatbot pédagogique réseaux -->
+                <div class="project-card project-chatbot">
+                    <div class="project-img-container">
+                        <!-- Remplacez cette URL par votre image réelle -->
+                        <div class="project-placeholder">
+                            <div class="title">CHATBOT</div>
+                            <div class="subtitle">Pédagogique Réseaux</div>
+                            <div class="subtitle">IA • RASA • Python</div>
+                            <div class="accent"></div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Chatbot pédagogique réseaux</h3>
+                        <p class="project-description">Assistant intelligent utilisant le NLP et l'IA conversationnelle pour faciliter l'apprentissage des concepts réseaux informatiques.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">IA</span>
+                            <span class="project-tag">Chatbot</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Code Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Projet 5: Générateur de mots de passe -->
+<div class="project-card project-password">
+    <div class="project-img-container">
+        <img src="src/password_generator.png" 
+             alt="Générateur de mots de passe" 
+             class="project-image">
+    </div>
+    <div class="project-content">
+        <h3 class="project-title">Générateur de mots de passe</h3>
+        <p class="project-description">Outil de génération de mots de passe sécurisés avec options de personnalisation, analyse de robustesse et interface web conviviale.</p>
+        <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Sécurité</span>
+            <span class="project-tag">Cryptographie</span>
+            <span class="project-tag">Web App</span>
+        </div>
+        <div class="project-links">
+            <a href="https://github.com/SIHAMCODE13/mon_premier_mini_projet.git" class="project-link" target="_blank">
+                <i class="fab fa-github"></i>
+                Code Source
+            </a>
+            <a href="https://huggingface.co/spaces/SIHAMCODE/password-generator-siham" class="project-link" target="_blank">
+                <i class="fas fa-terminal"></i>
+                Utiliser en ligne
+            </a>
+        </div>
+    </div>
+</div>        </div>
+            
+        </section>   
+        
+        <!-- Contact Section -->
+    <section id="contact" class="contact fade-in">
+        <div class="container">
+            <h2>Contactez-moi</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>Je suis ouverte aux opportunités de stage, collaboration sur des projets innovants ou échanges professionnels. N'hésitez pas à me contacter !</p>
+                    
+                    <a href="tel:+212693010064" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <div class="contact-label">Téléphone</div>
+                            <div>+212 693-010064</div>
+                        </div>
+                    </a>
+                    
+                    <a href="mailto:talbi.siham13@gmail.com" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <div class="contact-label">Email</div>
+                            <div>talbi.siham13@gmail.com</div>
+                        </div>
+                    </a>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <div class="contact-label">Localisation</div>
+                            <div>Fès, Maroc</div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/siham-talbi-829209305/" class="social-link" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/SIHAMCODE13" class="social-link" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/siham_si13/" class="social-link" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre nom complet" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Votre adresse email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sujet du message" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Votre message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/siham-talbi-829209305/" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/SIHAMCODE13" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/siham_si13/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#about" class="footer-link">À propos</a>
+                <a href="#skills" class="footer-link">Compétences</a>
+                <a href="#certifications" class="footer-link">Certifications</a>
+                <a href="#projects" class="footer-link">Projets</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+            
+            <p>&copy; 2024 TALBI SIHAM. Tous droits réservés.</p>
+            <p style="opacity: 0.8; margin-top: 10px;">Développé avec passion et innovation</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced JavaScript with better text visibility
+        // Loading progress
+        window.addEventListener('load', () => {
+            const loadingBar = document.getElementById('loadingBar');
+            loadingBar.style.width = '100%';
+            setTimeout(() => {
+                loadingBar.style.opacity = '0';
+            }, 500);
+        });
+
+        // Theme Toggle with enhanced animation
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                if (document.body.classList.contains('dark-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+                themeToggle.style.transform = 'scale(1)';
+            }, 300);
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        // Mobile Menu Toggle with enhanced animation
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+            
+            // Animate hamburger
+            hamburger.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                hamburger.style.transform = 'scale(1)';
+            }, 200);
+        });
+
+        // Enhanced scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.fade-in').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Enhanced scroll progress
+        window.addEventListener('scroll', () => {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset;
+            const scrollPercent = (scrollTop) / (docHeight - winHeight);
+            const loadingBar = document.getElementById('loadingBar');
+            loadingBar.style.width = (scrollPercent * 100) + '%';
+            
+            // Header background effect
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                if (document.body.classList.contains('dark-mode')) {
+                    header.style.background = 'rgba(30, 41, 59, 0.95)';
+                }
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                if (document.body.classList.contains('dark-mode')) {
+                    header.style.background = 'rgba(30, 41, 59, 0.95)';
+                }
+                header.style.backdropFilter = 'blur(15px)';
+            }
+        });
+
+        // Enhanced smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        hamburger.querySelector('i').classList.add('fa-bars');
+                        hamburger.querySelector('i').classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+
+        // Enhanced form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                submitBtn.disabled = true;
+                submitBtn.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+                    contactForm.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.transform = 'scale(1)';
+                }, 2000);
+            });
+        }
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Animated counter for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / 50;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.ceil(current);
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Initialize animations when section is in view
+        const aboutSection = document.getElementById('about');
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    aboutObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (aboutSection) {
+            aboutObserver.observe(aboutSection);
+        }
+
+        // Skills Section Interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtrage par catégorie
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const skillCards = document.querySelectorAll('.skill-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filtrer les cartes de compétences
+                    skillCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+            
+            // Animation des icônes au chargement
+            setTimeout(() => {
+                document.querySelectorAll('.skill-icon').forEach((icon, index) => {
+                    setTimeout(() => {
+                        icon.style.transform = 'scale(1.1) rotate(5deg)';
+                        setTimeout(() => {
+                            icon.style.transform = 'scale(1) rotate(0)';
+                        }, 300);
+                    }, index * 100);
+                });
+            }, 1000);
+        });
+
+                // Script pour la modal d'image
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const closeBtn = document.getElementsByClassName("close")[0];
+            
+            // Ajouter un événement de clic à toutes les images de certificat
+            const certificateImages = document.querySelectorAll('.certificate-image');
+            certificateImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                });
+            });
+            
+            // Fermer la modal
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+            
+            // Fermer la modal en cliquant à l'extérieur
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+
+                // Pour ajouter des images réelles plus tard, remplacez les placeholders par :
+        // <img src="chemin/vers/votre-image.jpg" alt="Nom du projet" class="project-image">
+        // Exemple :
+        // <img src="images/java-car-rental.jpg" alt="Application JAVA Location de Voitures" class="project-image">
+    </script>
+</body>
+</html>
