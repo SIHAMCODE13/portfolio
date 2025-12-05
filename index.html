@@ -2357,17 +2357,16 @@
                 <h1>TALBI SIHAM</h1>
                 <h2>Étudiante Ingénieure en Informatique</h2>
                 <p>Spécialisée en Intelligence Artificielle & Confiance Numérique<br>Passionnée par l'innovation technologique et la sécurité des systèmes</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn">
-                        <i class="fas fa-rocket"></i>
-                        Voir mes projets
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-paper-plane"></i>
-                        Me contacter
-                    </a>
-                </div>
-            </div>
+<div class="hero-buttons">
+    <a href="src/cv_SIHAM_TALBI.pdf" download="CV_TALBI_SIHAM.pdf" class="btn">
+        <i class="fas fa-download"></i>
+        Télécharger mon CV
+    </a>
+    <a href="#contact" class="btn btn-outline">
+        <i class="fas fa-paper-plane"></i>
+        Me contacter
+    </a>
+</div>            </div>
         </div>
     </section>
 
@@ -2382,18 +2381,6 @@
                         <div class="profile-image-wrapper">
                             <img src="siham-prof_img.png" alt="Talbi Siham" class="profile-image">
                             <div class="image-overlay">
-                                <div class="tech-badge">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                                <div class="tech-badge">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <div class="tech-badge">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
-                                <div class="tech-badge">
-                                    <i class="fab fa-js"></i>
-                                </div>
                             </div>
                         </div>
                         <div class="profile-status">
@@ -2459,7 +2446,7 @@
                                         <i class="fas fa-shield-alt"></i>
                                     </div>
                                     <div class="expertise-content">
-                                        <div class="expertise-title">Sécurité Informatique</div>
+                                        <div class="expertise-title">Confiance Numérique</div>
                                     </div>
                                 </div>
                                 <div class="expertise-item">
@@ -2484,10 +2471,10 @@
 
                     <!-- Call to Action -->
                     <div class="about-actions">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i>
-                            Voir mes projets
-                        </a>
+    <a href="src/cv_SIHAM_TALBI.pdf" download="CV_TALBI_SIHAM.pdf" class="btn">
+        <i class="fas fa-download"></i>
+        Télécharger mon CV
+    </a>
                         <a href="#contact" class="btn btn-outline">
                             <i class="fas fa-paper-plane"></i>
                             Discutons de votre projet
@@ -3193,24 +3180,28 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Votre nom complet" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Votre adresse email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sujet du message" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Votre message..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn">
-                            <i class="fas fa-paper-plane"></i>
-                            Envoyer le message
-                        </button>
-                    </form>
+<form action="https://formspree.io/f/xgvgzzdb" method="POST">
+    <div class="form-group">
+        <input name="name" type="text" class="form-control" placeholder="Votre nom complet" required>
+    </div>
+
+    <div class="form-group">
+        <input name="email" type="email" class="form-control" placeholder="Votre adresse email" required>
+    </div>
+
+    <div class="form-group">
+        <input name="subject" type="text" class="form-control" placeholder="Sujet du message" required>
+    </div>
+
+    <div class="form-group">
+        <textarea name="message" class="form-control" placeholder="Votre message..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn">
+        <i class="fas fa-paper-plane"></i>
+        Envoyer le message
+    </button>
+</form>
                 </div>
             </div>
         </div>
