@@ -2729,57 +2729,321 @@
 
 
 <!-- Hero Section avec nouvelle photo -->
-<section class="hero">
-    <div class="floating-elements">
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-        <div class="floating-element"></div>
-    </div>
-    <div class="container">
-        <div class="hero-content">
-            
-            <h1>TALBI SIHAM</h1>
-            <h2>Étudiante Ingénieure en Informatique</h2>
-            
-            <!-- Phrase d'accroche avec effet de lumière -->
-            <div class="tagline-glow">
-                <p>L'IA au service de la sécurité, la sécurité au service de l'innovation</p>
-                <div class="glow-effect"></div>
-            </div>
-            
-            <div class="hero-buttons">
-                <a href="src/cv_SIHAM_TALBI.pdf" download="CV_TALBI_SIHAM.pdf" class="btn">
-                    <i class="fas fa-download"></i>
-                    Télécharger mon CV
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    <i class="fas fa-paper-plane"></i>
-                    Me contacter
-                </a>
-            </div>
-            <br>
-                        <!-- Barre d'icônes sociales au-dessus de la phrase -->
-            <div class="social-bar">
-                <a href="https://github.com/SIHAMCODE13" class="social-icon github" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                    <span class="social-tooltip">GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/siham-talbi-829209305/" class="social-icon linkedin" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                    <span class="social-tooltip">LinkedIn</span>
-                </a>
-                <a href="mailto:talbi.siham13@gmail.com" class="social-icon gmail" title="Envoyer un email">
-                    <i class="fas fa-envelope"></i>
-                    <span class="social-tooltip">Email</span>
-                </a>
-            </div>
+<!-- ========== HERO NEXT-GEN ========== -->
+<section id="hero-ng">
+  <canvas id="hero-canvas"></canvas>
 
-        </div>
+  <div class="hero-ng-content">
+    <div class="glitch-wrapper">
+      <h1 class="glitch" data-text="TALBI SIHAM">TALBI SIHAM</h1>
     </div>
+    <h2 class="sub-glow">Étudiante Ingénieure en Informatique</h2>
+
+    <div class="neon-tagline">
+      <span>L'IA au service de la sécurité,</span>
+      <span>la sécurité au service de l'innovation</span>
+    </div>
+
+    <div class="hero-ng-cta">
+      <a href="src/cv_SIHAM_TALBI.pdf" download class="btn-ng pulse">
+        <i class="fas fa-download"></i> Télécharger mon CV
+      </a>
+      <a href="#contact" class="btn-ng btn-ng-outline glow-on-hover">
+        <i class="fas fa-paper-plane"></i> Me contacter
+      </a>
+    </div>
+
+    <div class="hero-ng-social">
+      <a href="https://github.com/SIHAMCODE13" target="_blank" class="social-ng" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/siham-talbi-829209305" target="_blank" class="social-ng" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="mailto:talbi.siham13@gmail.com" class="social-ng" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
 </section>
 
-  <!-- About Section -->
+<style>
+/* ---------- RESET LOCAL ---------- */
+#hero-ng {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-ng-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 900px;
+}
+
+/* ---------- GLITCH ---------- */
+.glitch-wrapper {
+  display: inline-block;
+}
+.glitch {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  color: #fff;
+  letter-spacing: 3px;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch::before {
+  animation: glitch-1 0.5s infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+.glitch::after {
+  animation: glitch-2 0.5s infinite;
+  color: #ff00ff;
+  z-index: -2;
+}
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 2px); }
+  40% { clip-path: inset(50% 0 20% 0); transform: translate(3px, -2px); }
+  60% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 3px); }
+  80% { clip-path: inset(80% 0 10% 0); transform: translate(2px, -3px); }
+}
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  20% { clip-path: inset(80% 0 10% 0); transform: translate(3px, -2px); }
+  40% { clip-path: inset(10% 0 80% 0); transform: translate(-3px, 2px); }
+  60% { clip-path: inset(60% 0 20% 0); transform: translate(2px, 3px); }
+  80% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, -3px); }
+}
+
+/* ---------- SUB & NEON ---------- */
+.sub-glow {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  margin: 10px 0 30px;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
+
+.neon-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.neon-tagline span {
+  display: block;
+  color: #fff;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 4px #fff,
+    0 0 8px #0ff,
+    0 0 16px #0ff;
+  animation: flicker 3s infinite alternate;
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ---------- BOUTONS ---------- */
+.hero-ng-cta {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.btn-ng {
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000;
+  background: #00ffff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-ng-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+.btn-ng:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+}
+.btn-ng-outline:hover {
+  background: #ff00ff;
+  color: #000;
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+}
+.pulse {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+  50% { box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; }
+  100% { box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+}
+
+/* ---------- SOCIAL ---------- */
+.hero-ng-social {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.social-ng {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.social-ng:hover {
+  background: #00ffff;
+  color: #000;
+  transform: translateY(-5px) rotate(360deg);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 700px) {
+  .hero-ng-cta { flex-direction: column; align-items: center; }
+  .glitch { font-size: 2.5rem; }
+}
+</style>
+
+<script>
+/* ---------- PARTICULES INTERACTIVES ---------- */
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+let W = canvas.width = innerWidth;
+let H = canvas.height = innerHeight;
+const particles = [];
+const maxParticles = 120;
+
+window.addEventListener('resize', () => {
+  W = canvas.width = innerWidth;
+  H = canvas.height = innerHeight;
+});
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = Math.random() * 0.8 - 0.4;
+    this.speedY = Math.random() * 0.8 - 0.4;
+    this.color = `hsl(${180 + Math.random() * 40}, 100%, 60%)`;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > W) this.speedX *= -1;
+    if (this.y < 0 || this.y > H) this.speedY *= -1;
+  }
+  draw() {
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function init() {
+  for (let i = 0; i < maxParticles; i++) particles.push(new Particle());
+}
+init();
+
+function drawLines() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.strokeStyle = `rgba(0, 255, 255, ${1 - dist / 120})`;
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  drawLines();
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ---------- INTERACTIVITÉ SOURIS ---------- */
+canvas.addEventListener('mousemove', (e) => {
+  const mx = e.clientX;
+  const my = e.clientY;
+  particles.forEach(p => {
+    const dx = mx - p.x;
+    const dy = my - p.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 100) {
+      const force = (100 - dist) / 100;
+      p.speedX += dx * force * 0.02;
+      p.speedY += dy * force * 0.02;
+    }
+  });
+});
+</script>
+<!-- ========== /HERO NEXT-GEN ========== -->
+ 
+
+<!-- About Section -->
 <section id="about" class="about fade-in">
   <div class="container">
     <h2>À propos de moi</h2>
