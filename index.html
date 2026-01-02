@@ -1345,169 +1345,193 @@
 
 
 
-        /* Skills Section */
-        .skills {
-            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
-            position: relative;
-            overflow: hidden;
-        }
+/* ===== SKILLS SECTION : même nom, style HERO-compatible ===== */
+.skills {
+  background: radial-gradient(circle at 20% 30%, rgba(0,255,255,.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255,0,255,.05) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  color: #fff;
+}
 
-        .skills::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
+.skills::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 10%, rgba(0,255,255,.08) 0%, transparent 50%),
+              radial-gradient(circle at 90% 90%, rgba(255,0,255,.08) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+/* sous-titre */
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,.7);
+  margin: 0 auto 60px;
+  max-width: 600px;
+}
 
-        .skills-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-        /* Navigation par catégories */
-        .skills-categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 50px;
-            padding: 0 20px;
-        }
+/* ===== Navigation catégories ===== */
+.skills-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
+}
 
-        .category-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            background: var(--card-bg);
-            border: 2px solid transparent;
-            border-radius: 50px;
-            color: var(--text-color);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 50px;
+  color: rgba(255,255,255,.8);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .4s cubic-bezier(.34,1.56,.64,1);
+  backdrop-filter: blur(10px);
+}
 
-        .category-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary-color);
-        }
+.category-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: #00ffff;
+  box-shadow: 0 8px 25px rgba(0,255,255,.25);
+  color: #fff;
+}
 
-        .category-btn.active {
-            background: var(--gradient);
-            color: white;
-            border-color: transparent;
-        }
+.category-btn.active {
+  background: linear-gradient(135deg,#00ffff,#ff00ff);
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 8px 30px rgba(0,255,255,.4);
+}
 
-        .category-btn i {
-            font-size: 1.1rem;
-        }
+.category-btn i {
+  font-size: 1.1rem;
+  transition: transform .3s;
+}
 
-        /* Grille des compétences */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
+.category-btn:hover i {
+  transform: scale(1.2) rotate(-10deg);
+}
 
-        .skill-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            opacity: 1;
-            transform: scale(1);
-        }
+/* ===== Grille compétences ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
 
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.skill-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all .4s cubic-bezier(.34,1.56,.64,1);
+  backdrop-filter: blur(10px);
+}
 
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg,#00ffff,#ff00ff);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+}
 
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
+.skill-card:hover::before {
+  transform: scaleX(1);
+}
 
-        .skill-card.hidden {
-            opacity: 0.3;
-            transform: scale(0.95);
-            pointer-events: none;
-        }
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,.2),
+              0 0 20px rgba(0,255,255,.3);
+  border-color: rgba(0,255,255,.3);
+}
 
-        .skill-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 15px;
-        }
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
 
-        .skill-icon-wrapper {
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
+.skill-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform .4s;
+}
 
-        .skill-icon {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            transition: var(--transition);
-        }
+.skill-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform .4s;
+}
 
-        .skill-card:hover .skill-icon {
-            transform: scale(1.1);
-        }
+.skill-card:hover .skill-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
 
-        .skill-info {
-            flex: 1;
-        }
+.skill-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
 
-        .skill-info h3 {
-            margin: 0 0 5px 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
+/* ===== Scroll reveal doux ===== */
+.skill-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp .8s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Filtre : carte cachée ===== */
+/* ===== Filtre : carte cachée ===== */
+.skill-card.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.4s, transform 0.4s;
+}
 
 
 
@@ -1515,9 +1539,19 @@
 
 
 
-/* ************************************* */
 
-         /* Experience Section */
+
+
+
+
+
+
+
+
+
+/* *********************************************************** */
+
+/* Experience Section */
         .experience {
             padding: 100px 0;
             background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
@@ -2694,32 +2728,233 @@
     <div class="loading-bar" id="loadingBar"></div>
 
     <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <i class="fas fa-code"></i>
-                    TALBI SIHAM
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#skills">Compétences</a></li>
-                    <li><a href="#experience">Expérience</a></li>
+<!-- ========== HEADER NEXT-GEN ========== -->
+<header id="header-ng">
+  <div class="header-container">
+    <a href="#" class="logo">
+      <i class="fas fa-code"></i>
+      <span>TALBI SIHAM</span>
+    </a>
 
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#projects">Projets</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <nav class="nav-menu" id="navMenu">
+      <a href="#about-sobre" class="nav-link">À propos</a>
+      <a href="#skills" class="nav-link">Compétences</a>
+      <a href="#experience" class="nav-link">Expérience</a>
+      <a href="#certifications" class="nav-link">Certifications</a>
+      <a href="#projects" class="nav-link">Projets</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
 
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+/* ========== HEADER NEXT-GEN ========== */
+#header-ng {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(14, 14, 17, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Logo animé --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo i {
+  font-size: 1.8rem;
+  color: var(--neon-cyan);
+  animation: pulseGlow 2s infinite;
+}
+
+.logo span {
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textFlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 10px var(--neon-cyan); }
+  50% { text-shadow: 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan); }
+}
+
+@keyframes textFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* --- Navigation fluide --- */
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
+}
+
+.nav-link:hover {
+  color: #fff;
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* --- Bouton thème animé --- */
+.theme-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(180deg);
+  box-shadow: 0 0 20px var(--neon-purple);
+  border-color: var(--neon-purple);
+}
+
+/* --- Hamburger animé --- */
+.hamburger {
+  width: 40px;
+  height: 40px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: var(--neon-cyan);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- Menu mobile --- */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 80px;
+    right: 2rem;
+    background: rgba(14, 14, 17, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+</style>
+
+<script>
+// Toggle mobile menu
+const hamburger1 = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+hamburger1.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  hamburger1.classList.toggle('active');
+});
+
+// Smooth scroll
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+    hamburger.classList.remove('active');
+  });
+});
+</script>
 
 
 
@@ -3043,86 +3278,346 @@ canvas.addEventListener('mousemove', (e) => {
 <!-- ========== /HERO NEXT-GEN ========== -->
  
 
-<!-- About Section -->
-<section id="about" class="about fade-in">
+<!-- ========== ABOUT SOBRE & HERO-COMPATIBLE ========== -->
+<section id="about-sobre" class="fade-in">
   <div class="container">
-    <h2>À propos de moi</h2>
 
-    <div class="about-wrapper">
-      <!-- Image de profil animée -->
-      <div class="about-image">
-        <img src="SIHAM_TALBI.jpeg" alt="Talbi Siham" class="profile-img">
-        <div class="profile-glow"></div>
+    <h2 class="section-title">À propos de moi</h2>
+
+    <div class="about-sobre-grid">
+      <!-- Image avec lumière blanche -->
+      <div class="about-photo-sobre">
+        <div class="photo-sobre-frame">
+          <img src="SIHAM_TALBI.jpeg" alt="Talbi Siham" class="photo-sobre-img">
+        </div>
       </div>
 
-<!-- Texte descriptif -->
-<div class="about-text">
-  <h3>Étudiante en Ingénierie Informatique</h3>
-  <p class="tagline">Informatique • IA • Confiance Numérique • Cloud & DevOps</p>
+      <!-- Contenu -->
+      <div class="about-content-sobre">
+        <h3 class="about-name-sobre">TALBI SIHAM</h3>
+        <p class="about-role-sobre">Étudiante en Ingénierie Informatique</p>
+        <p class="about-tagline-sobre">IA • Cloud & DevOps • Confiance Numérique</p>
 
-  <p>
-    Étudiante en <strong>2<sup>ème</sup> année d’ingénierie informatique</strong> à l’
-    <strong>ENSA Fès</strong>, filière
-    <span class="highlight">Informatique, Intelligence Artificielle et Confiance Numérique</span>.
-    Passionnée par le
-    <span class="highlight">Cloud Computing</span> et le
-    <span class="highlight">DevOps</span>,
-    je m’oriente vers l’automatisation, le déploiement continu et la fiabilité des systèmes.
-  </p>
+        <p class="about-text-sobre">
+          Étudiante en <strong>2<sup>ème</sup> année</strong> à l’<strong>ENSA Fès</strong>, filière
+          <span class="highlight-sobre">Informatique, Intelligence Artificielle et Confiance Numérique</span>.
+          Passionnée par le <span class="highlight-sobre">Cloud Computing</span> et le <span class="highlight-sobre">DevOps</span>.
+        </p>
+
+        <!-- Boutons sobre -->
+        <div class="about-buttons-sobre">
+          <a href="src/cv_SIHAM_TALBI.pdf" download class="btn-sobre btn-sobre-primary">
+            <i class="fas fa-download"></i> Télécharger mon CV
+          </a>
+          <a href="#contact" class="btn-sobre btn-sobre-outline">
+            <i class="fas fa-paper-plane"></i> Me contacter
+          </a>
+        </div>
+        <br>
+
+
+      </div>
+      
+    </div>
+    <br><br>
+              <!-- Bandeau horizontal animé -->
+<!-- ========== BANDEAU HORIZONTAL INTERACTIF ========== -->
+<div class="banner-interactif">
+  <div class="banner-track-interactif">
+    <!-- Original -->
+    <div class="banner-card-interactif">
+      <i class="fas fa-graduation-cap"></i>
+      <span><strong>4</strong> Ans d'études</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-certificate"></i>
+      <span><strong>6</strong> Certifications</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-tasks"></i>
+      <span><strong>5</strong> Projets</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-briefcase"></i>
+      <span><strong>1</strong> an d'expérience</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-cloud"></i>
+      <span>Cloud & DevOps</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-robot"></i>
+      <span>Intelligence Artificielle</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-shield-alt"></i>
+      <span>Confiance Numérique</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-code"></i>
+      <span>Développement Web</span>
+    </div>
+
+    <!-- Duplication pour boucle fluide -->
+    <div class="banner-card-interactif">
+      <i class="fas fa-graduation-cap"></i>
+      <span><strong>4</strong> Ans d'études</span>
+    </div>
+    <div class="banner-card-interactif">
+      <i class="fas fa-certificate"></i>
+      <span><strong>6</strong> Certifications</span>
+    </div>
+  </div>
 </div>
 
-    <!-- Bandeau horizontal animé -->
-    <div class="animated-banner">
-      <div class="banner-track">
-        <div class="banner-item">
-          <i class="fas fa-graduation-cap"></i>
-          <span><strong>4</strong> Années d'études</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-certificate"></i>
-          <span><strong>6</strong> Certifications</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-tasks"></i>
-          <span><strong>5</strong> Projets réalisés</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-briefcase"></i>
-          <span><strong>1</strong> Année d'expérience</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-cloud"></i>
-          <span>Cloud & DevOps</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-robot"></i>
-          <span>Intelligence Artificielle</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-shield-alt"></i>
-          <span>Confiance Numérique</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-code"></i>
-          <span>Développement Web</span>
-        </div>
+<style>
 
-        <!-- Duplication pour boucle fluide -->
-        <div class="banner-item">
-          <i class="fas fa-graduation-cap"></i>
-          <span><strong>4</strong> Années d'études</span>
-        </div>
-        <div class="banner-item">
-          <i class="fas fa-certificate"></i>
-          <span><strong>6</strong> Certifications</span>
-        </div>
-      </div>
+/* ========== BANDEAU INTERACTIF ========== */
+.banner-interactif {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding: 40px 0;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banner-track-interactif {
+  display: inline-flex;
+  animation: scrollSmooth 30s linear infinite;
+}
+
+.banner-card-interactif {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 50px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  min-width: 180px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.banner-card-interactif i {
+  font-size: 2.2rem;
+  color: #00ffff;
+  transition: all 0.3s;
+}
+
+.banner-card-interactif:hover {
+  color: #fff;
+  transform: translateY(-8px) scale(1.1);
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.banner-card-interactif:hover i {
+  color: #ffffff;
+  text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+}
+
+@keyframes scrollSmooth {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Pause au survol --- */
+.banner-interactif:hover .banner-track-interactif {
+  animation-play-state: paused;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .banner-card-interactif {
+    min-width: 140px;
+    padding: 0 30px;
+    font-size: 0.9rem;
+  }
+
+  .banner-card-interactif i {
+    font-size: 1.8rem;
+  }
+}
+</style>
     </div>
+<br><br>
 
   </div>
 </section>
 
+<style>
+/* ========== ABOUT SOBRE & HERO-COMPATIBLE ========== */
+#about-sobre {
+  padding: 100px 2rem;
+  background: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
 
+.section-title {
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 60px;
+  position: relative;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, #00ffff);
+  border-radius: 2px;
+}
+
+.about-sobre-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- Image avec lumière blanche douce --- */
+.about-photo-sobre {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-sobre-frame {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2),
+              inset 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: softPulse 5s ease-in-out infinite;
+}
+
+.photo-sobre-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 0 50px rgba(255, 255, 255, 0.4); }
+}
+
+/* --- Contenu --- */
+.about-content-sobre {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-name-sobre {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.about-role-sobre {
+  font-size: 1.2rem;
+  color: #00ffff;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.about-tagline-sobre {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 25px;
+}
+
+.about-text-sobre {
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 35px;
+}
+
+.highlight-sobre {
+  color: #ffffff;
+  font-weight: 600;
+  background: rgba(0, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* --- Boutons sobre --- */
+.about-buttons-sobre {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-sobre {
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+}
+
+.btn-sobre-primary {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+}
+
+.btn-sobre-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+}
+
+.btn-sobre-outline {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-sobre-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .about-sobre-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-buttons-sobre {
+    justify-content: center;
+  }
+}
+</style>
 
 
 
@@ -4126,31 +4621,43 @@ canvas.addEventListener('mousemove', (e) => {
         }
 
         // Skills Section Interactivity
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filtrage par catégorie
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const skillCards = document.querySelectorAll('.skill-card');
+// Skills Section Interactivity - FILTRE DES CARTES DE COMPÉTENCES
+document.addEventListener('DOMContentLoaded', function() {
+    // Filtrage par catégorie
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Retirer la classe active de tous les boutons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Ajouter la classe active au bouton cliqué
+            this.classList.add('active');
             
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Retirer la classe active de tous les boutons
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    // Ajouter la classe active au bouton cliqué
-                    this.classList.add('active');
-                    
-                    const category = this.getAttribute('data-category');
-                    
-                    // Filtrer les cartes de compétences
-                    skillCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-                });
+            const category = this.getAttribute('data-category');
+            
+            // Filtrer les cartes de compétences
+            skillCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                // Montrer ou cacher la carte selon la catégorie
+                if (category === 'all' || cardCategory === category) {
+                    // Montrer la carte
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                    card.style.pointerEvents = 'all';
+                    card.style.display = 'block';
+                } else {
+                    // Cacher la carte
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    card.style.pointerEvents = 'none';
+                    card.style.display = 'none';
+                }
             });
-            
+        });
+    });
+});            
             // Animation des icônes au chargement
             setTimeout(() => {
                 document.querySelectorAll('.skill-icon').forEach((icon, index) => {
@@ -4162,7 +4669,6 @@ canvas.addEventListener('mousemove', (e) => {
                     }, index * 100);
                 });
             }, 1000);
-        });
 
                 // Script pour la modal d'image
         document.addEventListener('DOMContentLoaded', function() {
@@ -4200,6 +4706,54 @@ banner.addEventListener('mouseenter', () => {
 banner.addEventListener('mouseleave', () => {
   banner.style.animationPlayState = 'running';
 });
+
+
+
+
+
+
+// ********
+
+// Skills Section Interactivity
+document.addEventListener('DOMContentLoaded', function() {
+    // Filtrage par catégorie
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Retirer la classe active de tous les boutons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Ajouter la classe active au bouton cliqué
+            this.classList.add('active');
+            
+            const category = this.getAttribute('data-category');
+            
+            // Filtrer les cartes de compétences
+            skillCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+    
+    // Animation des icônes au chargement
+    setTimeout(() => {
+        document.querySelectorAll('.skill-icon').forEach((icon, index) => {
+            setTimeout(() => {
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+                setTimeout(() => {
+                    icon.style.transform = 'scale(1) rotate(0)';
+                }, 300);
+            }, index * 100);
+        });
+    }, 1000);
+});
+
+</script>
 
     </script>
 </body>
