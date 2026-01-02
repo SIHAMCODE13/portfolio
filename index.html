@@ -4778,28 +4778,52 @@ canvas.addEventListener('mousemove', (e) => {
             });
         });
 
-        // Enhanced form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-                submitBtn.disabled = true;
-                submitBtn.style.transform = 'scale(0.95)';
-                
-                setTimeout(() => {
-                    alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-                    contactForm.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.transform = 'scale(1)';
-                }, 2000);
-            });
-        }
+// ===== FORMULAIRE CONTACT : ENVOI RÉEL + ANIMATIONS NÉON =====
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // on garde pour l’animation
 
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalHTML = submitBtn.innerHTML;
+
+    // ── Animation "envoi" ──
+    submitBtn.classList.add('loading');
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>ENVOI...</span>';
+    submitBtn.disabled = true;
+
+    try {
+      // ── Envoi réel à Formspree ──
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (res.ok) {
+        // ── Succès ──
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>ENVOYÉ !</span>';
+        submitBtn.style.background = 'linear-gradient(135deg, #00ff00, #00ffff)';
+        contactForm.reset();
+      } else {
+        // ── Erreur serveur ──
+        throw new Error('Erreur serveur');
+      }
+    } catch (err) {
+      // ── Erreur réseau / serveur ──
+      submitBtn.innerHTML = '<i class="fas fa-times"></i> <span>ERREUR</span>';
+      submitBtn.style.background = 'linear-gradient(135deg, #ff0000, #ff6600)';
+    } finally {
+      // ── Réinitialisation après 3 s ──
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.innerHTML = originalHTML;
+        submitBtn.disabled = false;
+        submitBtn.style.background = '';
+      }, 3000);
+    }
+  });
+}
         // Add parallax effect to hero section
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
