@@ -188,15 +188,15 @@ body:not(.dark-mode) .form-control {
 
         /* Header */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transition: var(--transition);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background: var(--section-bg);
+          backdrop-filter: blur(15px);
+          box-shadow: var(--shadow);
+          z-index: 1000;
+          transition: var(--transition);
         }
 
         .dark-mode header {
@@ -1379,20 +1379,18 @@ body:not(.dark-mode) .form-control {
 
 /* ===== SKILLS SECTION : même nom, style HERO-compatible ===== */
 .skills {
-  background: radial-gradient(circle at 20% 30%, rgba(0,255,255,.05) 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, rgba(255,0,255,.05) 0%, transparent 50%);
+  background: var(--section-bg);
   position: relative;
   overflow: hidden;
   padding: 100px 0;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .skills::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 10%, rgba(0,255,255,.08) 0%, transparent 50%),
-              radial-gradient(circle at 90% 90%, rgba(255,0,255,.08) 0%, transparent 50%);
+  background: none;
   pointer-events: none;
 }
 
@@ -1400,7 +1398,7 @@ body:not(.dark-mode) .form-control {
 .section-subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: rgba(255,255,255,.7);
+  color: var(--text-light);
   margin: 0 auto 60px;
   max-width: 600px;
 }
@@ -1425,10 +1423,10 @@ body:not(.dark-mode) .form-control {
   align-items: center;
   gap: 10px;
   padding: 15px 25px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 50px;
-  color: rgba(255,255,255,.8);
+  color: var(--text-color);
   font-weight: 500;
   cursor: pointer;
   transition: all .4s cubic-bezier(.34,1.56,.64,1);
@@ -1444,7 +1442,7 @@ body:not(.dark-mode) .form-control {
 
 .category-btn.active {
   background: linear-gradient(135deg,#00ffff,#ff00ff);
-  color: #000;
+  color: var(--text-color);
   border-color: transparent;
   box-shadow: 0 8px 30px rgba(0,255,255,.4);
 }
@@ -1534,7 +1532,7 @@ body:not(.dark-mode) .form-control {
 .skill-info h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -2275,17 +2273,17 @@ body:not(.dark-mode) .form-control {
 .form-control {
   width: 100%;
   padding: 16px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  background: var(--card-bg);
+  color: var(--text-color);
   backdrop-filter: blur(10px);
 }
 
 .form-control::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-light);
 }
 
 .form-control:focus {
@@ -2424,8 +2422,8 @@ textarea.form-control {
 }
 /* ---------- FOOTER ---------- */
 footer {
-  background: #000;
-  color: white;
+  background: var(--section-bg);
+  color: var(--text-color);
   padding: 60px 0 30px;
   text-align: center;
   position: relative;
@@ -2456,13 +2454,13 @@ footer::before {
 .social-link {
   width: 55px;
   height: 55px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   font-size: 1.4rem;
@@ -2486,20 +2484,26 @@ footer::before {
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-light);
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .footer-link:hover {
-  color: #00ffff;
+  color: var(--accent-color);
   text-shadow: 0 0 10px #00ffff;
 }
 
 footer p {
   opacity: 0.8;
   margin-top: 20px;
+}
+
+/* Dark mode footer override */
+.dark-mode footer {
+  background: #000;
+  color: white;
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -2509,6 +2513,50 @@ footer p {
     gap: 40px;
   }
   
+
+/* ========== THEME NORMALIZATION (light mode fixes) ========== */
+/* Override remaining hardcoded white/transparent whites in light mode so text stays readable */
+body:not(.dark-mode) #about-sobre,
+body:not(.dark-mode) #about-sobre *,
+body:not(.dark-mode) .skills,
+body:not(.dark-mode) .skills *,
+body:not(.dark-mode) footer,
+body:not(.dark-mode) footer *,
+body:not(.dark-mode) header,
+body:not(.dark-mode) header * {
+  color: var(--text-color) !important;
+  background: transparent !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  box-shadow: none !important;
+}
+
+/* Ensure cards and small UI surfaces use card background variable */
+body:not(.dark-mode) .skill-card,
+body:not(.dark-mode) .experience-content,
+body:not(.dark-mode) .contact-item,
+body:not(.dark-mode) .form-control,
+body:not(.dark-mode) .category-btn,
+body:not(.dark-mode) .btn-sobre-primary,
+body:not(.dark-mode) .btn-sobre-outline,
+body:not(.dark-mode) .photo-sobre-frame {
+  background: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+}
+
+/* Replace white-ish text opacities with theme light text */
+body:not(.dark-mode) .section-subtitle,
+body:not(.dark-mode) .about-tagline-sobre,
+body:not(.dark-mode) .footer-link,
+body:not(.dark-mode) .social-link {
+  color: var(--text-light) !important;
+}
+/* Force skill titles and category buttons to theme color when switching modes */
+.skills .skill-info h3,
+.skill-card .skill-info h3,
+.category-btn {
+  color: var(--text-color) !important;
+}
   .social-links {
     gap: 20px;
   }
@@ -3023,7 +3071,7 @@ footer p {
 /* ---------- BOUTON FILTRE IA (facultatif) ---------- */
 .category-btn[data-category="ai"] {
   border-color: rgba(255, 0, 255, 0.3);
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-color);
 }
 
 .category-btn[data-category="ai"].active,
@@ -3045,26 +3093,26 @@ footer p {
 
 /* Titre des compétences IA */
 .skill-card[data-category="ai"] .skill-info h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #fff;
-    margin: 0 0 8px 0;
-    line-height: 1.3;
-    transition: all 0.3s ease;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+  transition: all 0.3s ease;
 }
 
 /* Description optionnelle (si vous ajoutez plus de contenu) */
 .skill-card[data-category="ai"] .skill-info p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
-    line-height: 1.5;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* Effet au survol sur le titre */
 .skill-card[data-category="ai"]:hover .skill-info h3 {
-    color: #00ffff;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.25);
 }
 
 /* Animation pour le contenu skill-info */
@@ -3079,12 +3127,12 @@ footer p {
 
 /* Style pour le niveau de compétence (optionnel) */
 .skill-level {
-    margin-top: 8px;
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-    overflow: hidden;
+  margin-top: 8px;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 .skill-level-bar {
@@ -3157,10 +3205,11 @@ footer p {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(14, 14, 17, 0.8);
+  background: var(--section-bg);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: var(--text-color);
 }
 
 .header-container {
@@ -3179,7 +3228,7 @@ footer p {
   gap: 12px;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   position: relative;
   overflow: hidden;
@@ -3217,7 +3266,7 @@ footer p {
 .nav-link {
   position: relative;
   padding: 0.5rem 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-light);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -3243,8 +3292,8 @@ footer p {
 }
 
 .nav-link:hover {
-  color: #fff;
-  text-shadow: 0 0 5px var(--neon-cyan);
+  color: var(--primary-color);
+  text-shadow: 0 0 5px rgba(99,102,241,0.15);
 }
 
 /* --- Bouton thème animé --- */
@@ -3254,7 +3303,7 @@ footer p {
   border-radius: 50%;
   background: var(--glass);
   border: 1px solid var(--border);
-  color: #fff;
+  color: var(--text-color);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -3787,7 +3836,7 @@ canvas.addEventListener('mousemove', (e) => {
   gap: 10px;
   padding: 0 50px;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-light);
   min-width: 180px;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
@@ -3795,19 +3844,19 @@ canvas.addEventListener('mousemove', (e) => {
 
 .banner-card-interactif i {
   font-size: 2.2rem;
-  color: #00ffff;
+  color: var(--accent-color);
   transition: all 0.3s;
 }
 
 .banner-card-interactif:hover {
-  color: #fff;
+  color: var(--text-color);
   transform: translateY(-8px) scale(1.1);
-  text-shadow: 0 0 10px #00ffff;
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.25);
 }
 
 .banner-card-interactif:hover i {
-  color: #ffffff;
-  text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+  color: var(--accent-color);
+  text-shadow: 0 0 15px rgba(6,182,212,0.2), 0 0 25px rgba(6,182,212,0.15);
 }
 
 @keyframes scrollSmooth {
@@ -3843,9 +3892,8 @@ canvas.addEventListener('mousemove', (e) => {
 /* ========== ABOUT SOBRE & HERO-COMPATIBLE ========== */
 #about-sobre {
   padding: 100px 2rem;
-  background: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-  color: #fff;
+  background: var(--section-bg);
+  color: var(--text-color);
   position: relative;
   overflow: hidden;
 }
@@ -3855,7 +3903,7 @@ canvas.addEventListener('mousemove', (e) => {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 60px;
   position: relative;
-  color: #fff;
+  color: var(--text-color);
   letter-spacing: 1px;
 }
 
@@ -3892,9 +3940,8 @@ canvas.addEventListener('mousemove', (e) => {
   height: 280px;
   border-radius: 50%;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2),
-              inset 0 0 20px rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.06), inset 0 0 20px rgba(0,0,0,0.04);
   animation: softPulse 5s ease-in-out infinite;
 }
 
@@ -3903,7 +3950,7 @@ canvas.addEventListener('mousemove', (e) => {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(0,0,0,0.06);
 }
 
 @keyframes softPulse {
@@ -3921,34 +3968,34 @@ canvas.addEventListener('mousemove', (e) => {
 .about-name-sobre {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-color);
   margin-bottom: 8px;
   letter-spacing: 1px;
 }
 
 .about-role-sobre {
   font-size: 1.2rem;
-  color: #00ffff;
+  color: var(--accent-color);
   margin-bottom: 8px;
   font-weight: 500;
 }
 
 .about-tagline-sobre {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-light);
   margin-bottom: 25px;
 }
 
 .about-text-sobre {
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-color);
   margin-bottom: 35px;
 }
 
 .highlight-sobre {
-  color: #ffffff;
+  color: var(--text-color);
   font-weight: 600;
-  background: rgba(0, 255, 255, 0.1);
+  background: rgba(0, 255, 255, 0.06);
   padding: 2px 6px;
   border-radius: 4px;
 }
@@ -3974,10 +4021,10 @@ canvas.addEventListener('mousemove', (e) => {
 }
 
 .btn-sobre-primary {
-  background: rgba(255, 255, 255, 0.9);
-  color: #000;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
 .btn-sobre-primary:hover {
@@ -3986,9 +4033,9 @@ canvas.addEventListener('mousemove', (e) => {
 }
 
 .btn-sobre-outline {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0,0,0,0.06);
+  color: var(--text-color);
+  background: var(--card-bg);
 }
 
 .btn-sobre-outline:hover {
@@ -5036,18 +5083,22 @@ canvas.addEventListener('mousemove', (e) => {
             // Header background effect
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                if (document.body.classList.contains('dark-mode')) {
-                    header.style.background = 'rgba(30, 41, 59, 0.95)';
-                }
-                header.style.backdropFilter = 'blur(20px)';
+              header.style.background = 'rgba(255, 255, 255, 0.95)';
+              if (document.body.classList.contains('dark-mode')) {
+                header.style.background = 'rgba(30, 41, 59, 0.95)';
+              }
+              header.style.backdropFilter = 'blur(20px)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                if (document.body.classList.contains('dark-mode')) {
-                    header.style.background = 'rgba(30, 41, 59, 0.95)';
-                }
-                header.style.backdropFilter = 'blur(15px)';
+              header.style.background = 'rgba(255, 255, 255, 0.95)';
+              if (document.body.classList.contains('dark-mode')) {
+                header.style.background = 'rgba(30, 41, 59, 0.95)';
+              }
+              header.style.backdropFilter = 'blur(15px)';
             }
+
+            // Ensure header text color follows theme variables (fix white-on-white)
+            const rootTextColor = getComputedStyle(document.documentElement).getPropertyValue('--text-color') || '';
+            header.style.color = rootTextColor.trim();
         });
 
         // Enhanced smooth scrolling
