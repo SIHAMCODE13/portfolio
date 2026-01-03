@@ -23,7 +23,13 @@
             --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
             --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-        }
+        
+          --cursor-size: 22px;
+          --cursor-color: #ff00ff;        /* rose néon principal */
+          --cursor-glow: #ff66cc;        /* glow plus clair */
+          --cursor-blur: 12px;
+        
+          }
 
         .dark-mode {
             --primary-color: #818cf8;
@@ -74,7 +80,76 @@ body:not(.dark-mode) .form-control {
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+             cursor: none;    
         }
+
+        /* Le cercle principal qui suit la souris */
+.cursor {
+  position: fixed;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  background: radial-gradient(circle, var(--cursor-color) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;        /* effet néon sur fond sombre */
+  filter: blur(1px);
+  z-index: 9999;
+  transition: transform 0.08s ease-out, opacity 0.3s ease;
+}
+
+/* Halo lumineux autour du cercle */
+.cursor::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cursor-glow) 0%, transparent 60%);
+  filter: blur(var(--cursor-blur));
+  opacity: 0.8;
+  animation: pulse-glow 2s infinite alternate ease-in-out;
+}
+
+/* Petit point central pour la précision */
+.cursor::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+}
+
+/* Animation du halo */
+@keyframes pulse-glow {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.3); opacity: 0.4; }
+}
+
+/* Effet au survol des liens / boutons */
+a, button, .btn, .project-link, .social-link, .category-btn {
+  position: relative;
+}
+a:hover ~ .cursor,
+button:hover ~ .cursor,
+.btn:hover ~ .cursor,
+.project-link:hover ~ .cursor,
+.social-link:hover ~ .cursor,
+.category-btn:hover ~ .cursor {
+  transform: scale(1.6);
+  --cursor-color: #00ffff;        /* cyan au survol */
+  --cursor-glow: #66ffff;
+}
+
+/* Mode clair : on assombrit légèrement les couleurs */
+body:not(.dark-mode) .cursor {
+  mix-blend-mode: multiply;
+  --cursor-color: #d900ba;
+  --cursor-glow: #ff4dcc;
+}
 
         html {
             scroll-behavior: smooth;
@@ -3420,7 +3495,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     </div>
 
     <div class="hero-ng-cta">
-      <a href="src/cv_SIHAM_TALBI.pdf" download class="btn-ng pulse">
+      <a href="src/cv_SIHAM_TALBI.pdf" download class="btn-ng pulse no-scale">
         <i class="fas fa-download"></i> Télécharger mon CV
       </a>
       <a href="#contact" class="btn-ng btn-ng-outline glow-on-hover">
@@ -3746,7 +3821,7 @@ canvas.addEventListener('mousemove', (e) => {
 
         <!-- Boutons sobre -->
         <div class="about-buttons-sobre">
-          <a href="src/cv_SIHAM_TALBI.pdf" download class="btn-sobre btn-sobre-primary">
+          <a href="src/cv_SIHAM_TALBI.pdf" download class="btn-sobre btn-sobre-primary no-scale">
             <i class="fas fa-download"></i> Télécharger mon CV
           </a>
           <a href="#projects" class="btn-sobre btn-sobre-outline">
@@ -4042,6 +4117,12 @@ canvas.addEventListener('mousemove', (e) => {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Prevent scaling for elements that should not enlarge on hover */
+.no-scale:hover {
+  /* keep vertical lift but remove scale */
+  transform: translateY(-3px) !important;
 }
 
 /* --- Responsive --- */
@@ -5497,9 +5578,70 @@ submitBtn.addEventListener('mouseleave', function() {
   }
 });
 
+
+
 </script>
 
+<!-- ===== CURSEUR NÉON-FÉMININ ===== -->
+<style>
+/* on masque le curseur système */
+* { cursor: none !important; }
 
+.cursor-dot {
+  position: fixed;
+  width: 22px; height: 22px;
+  background: radial-gradient(circle, #ff00ff 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  filter: blur(1px);
+  transition: transform .08s ease-out, opacity .3s ease;
+}
+
+.cursor-dot::after { /* halo */
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff66cc 0%, transparent 60%);
+  filter: blur(12px);
+  animation: pulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: .8; }
+  100% { transform: scale(1.4); opacity: .4; }
+}
+
+body:not(.dark-mode) .cursor-dot {
+  mix-blend-mode: multiply;
+  background: radial-gradient(circle, #d900ba 0%, transparent 70%);
+}
+
+a:hover ~ .cursor-dot,
+button:hover ~ .cursor-dot,
+.btn:hover ~ .cursor-dot,
+.project-link:hover ~ .cursor-dot,
+.social-link:hover ~ .cursor-dot,
+.category-btn:hover ~ .cursor-dot {
+  transform: scale(1.6);
+  background: radial-gradient(circle, #00ffff 0%, transparent 70%);
+}
+</style>
+
+<div class="cursor-dot"></div>
+
+<script>
+const dot = document.querySelector('.cursor-dot');
+window.addEventListener('mousemove', e => {
+  dot.style.left = e.clientX - 11 + 'px';
+  dot.style.top  = e.clientY - 11 + 'px';
+});
+window.addEventListener('mouseout', () => dot.style.opacity = '0');
+window.addEventListener('mouseover', () => dot.style.opacity = '1');
+</script>
+<!-- /CURSEUR -->
 
 </body>
 </html>
