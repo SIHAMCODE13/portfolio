@@ -44,9 +44,9 @@ Ce portfolio est construit entièrement en **HTML, CSS et JavaScript** vanilla, 
     - **Formspree** : Pour la gestion de l'envoi du formulaire de contact.
 
 📫 Contact
-LinkedIn : Siham Talbi
+LinkedIn : [Siham Talbi](https://www.linkedin.com/in/siham-talbi-829209305)
 
-GitHub : @SIHAMCODE13
+GitHub : [@SIHAMCODE13](https://github.com/SIHAMCODE13)
 
 Email : talbi.siham13@gmail.com
 
